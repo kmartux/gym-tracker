@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import RegistroPeso, Entrenamiento
-from .serializers import RegistroPesoSerializer, EntrenamientoSerializer
+from .models import RegistroPeso, Entrenamiento,Serie
+from .serializers import RegistroPesoSerializer, EntrenamientoSerializer,SerieSerializer
 # Create your views here.
 class RegistroPesoList(generics.ListAPIView):
     queryset = RegistroPeso.objects.all()
@@ -11,3 +11,6 @@ class EntrenamientoList(generics.ListAPIView):
     queryset = Entrenamiento.objects.all()
     serializer_class = EntrenamientoSerializer
 
+class SerieList(generics.ListAPIView):
+    queryset = Serie.objects.all()
+    serializer_class = SerieSerializer

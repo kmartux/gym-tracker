@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import RegistroPeso, Entrenamiento
+from .models import RegistroPeso, Entrenamiento,Serie
 ##Sirve para traducir entre tu base de datos y el JSON que entiende React.
 
 class RegistroPesoSerializer(serializers.ModelSerializer):
@@ -11,3 +11,9 @@ class EntrenamientoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Entrenamiento
         fields = ['id', 'fecha', 'duracion', 'intensidad']
+        
+class SerieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Serie
+        fields = ['id','entrenamiento','ejercicio', 'numero_de_serie','repeticiones','peso', 'descanso']
+    
