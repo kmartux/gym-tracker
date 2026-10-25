@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tracker.views import RegistroPesoList
+from tracker.views import RegistroPesoList,EntrenamientoList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/pesos/', RegistroPesoList.as_view()),
+    path('api/entrenamientos/', EntrenamientoList.as_view() ),
 ]
+
