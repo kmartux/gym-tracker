@@ -4,19 +4,25 @@ from .models import RegistroPeso, Entrenamiento,Serie
 from .serializers import RegistroPesoSerializer, EntrenamientoSerializer,SerieSerializer
 # Create your views here.
 class RegistroPesoList(generics.ListCreateAPIView):
-    queryset = RegistroPeso.objects.all()
     serializer_class = RegistroPesoSerializer
+    
+    def get_queryset(self):
+        return RegistroPeso.objects.filter(usuario=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(usuario=self.request.user)
 
 class EntrenamientoList(generics.ListCreateAPIView):
-    queryset = Entrenamiento.objects.all()
     serializer_class = EntrenamientoSerializer
+
+    def get_queryset(self):
+        return Entrenamiento.objects.filter(usuario=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(usuario=self.request.user)
 
 class SerieList(generics.ListCreateAPIView):
-    queryset = Serie.objects.all()
     serializer_class = SerieSerializer
+
+    def get_queryset(self):
+        return Serie.objects.filter(entrenamiento__usuario=self.request.user)
