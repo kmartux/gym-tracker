@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tracker.views import RegistroPesoList,EntrenamientoList,SerieList
-
+from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/pesos/', RegistroPesoList.as_view()),
     path('api/entrenamientos/', EntrenamientoList.as_view() ),
     path('api/series/',SerieList.as_view()),
+    path('api/login/',obtain_auth_token),
 ]
 
