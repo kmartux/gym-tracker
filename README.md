@@ -12,21 +12,23 @@ App web para llevar el registro de tus entrenamientos y tu peso corporal, y ver 
 - API de lectura en formato JSON
 
 ## API
-Todas las direcciones responden a pedidos `GET`.
+Todas las direcciones, salvo el login, exigen un token en el encabezado
+`Authorization: Token <tu_token>`. Cada usuario solo ve y crea sus propios datos.
 
-| Dirección | Qué devuelve |
-|-----------|--------------|
-| `/api/pesos/` | Registros de peso corporal |
-| `/api/entrenamientos/` | Entrenamientos |
-| `/api/series/` | Series de cada entrenamiento |
+| Dirección | Método | Qué hace |
+|-----------|--------|----------|
+| `/api/login/` | POST | Recibe `username` y `password`, devuelve el token |
+| `/api/pesos/` | GET, POST | Lista y crea registros de peso |
+| `/api/entrenamientos/` | GET, POST | Lista y crea entrenamientos |
+| `/api/series/` | GET, POST | Lista y crea series de tus entrenamientos |
 
 ## Próximamente
-- Crear datos desde la API
-- Login con token, para que cada usuario vea solo lo suyo
 - Interfaz en React
 - Gráficos de progreso
+- Catálogo de ejercicios con grupos musculares
 - Entrenador personal con IA que use tu historial
 - PostgreSQL, Docker y GitHub Actions
+- Nutrición
 
 ## Tecnologías
 - Python
