@@ -17,3 +17,7 @@ class SerieSerializer(serializers.ModelSerializer):
         model = Serie
         fields = ['id','entrenamiento','ejercicio', 'numero_de_serie','repeticiones','peso', 'descanso']
     
+    def validate_entrenamiento(self, value):
+        if value.usuario != self.context['request'].user:
+            raise serializers.ValidationError("Ese entrenamiento no es tuyo.")
+        return value
